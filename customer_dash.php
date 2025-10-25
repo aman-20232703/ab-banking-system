@@ -1,180 +1,20 @@
+<?php
+include 'dbconnect.php';
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SecureBank - Banking Application</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        * {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        body {
-            margin: 0;
-            padding: 0;
-            background: #F8F9FA;
-        }
-
-        .gradient-card {
-            background: linear-gradient(135deg, #5B6FD8 0%, #7B68D6 50%, #9B5FD4 100%);
-        }
-
-        .blur-text {
-            filter: blur(8px);
-            user-select: none;
-        }
-
-        .sidebar-item {
-            transition: all 0.2s ease;
-        }
-
-        .sidebar-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(4px);
-        }
-
-        .sidebar-item.active {
-            background: rgba(255, 255, 255, 0.15);
-            border-left: 4px solid white;
-        }
-
-        .btn-primary {
-            transition: all 0.2s ease;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .card {
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-        }
-
-        .input-field {
-            transition: all 0.2s ease;
-        }
-
-        .input-field:focus {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(91, 111, 216, 0.2);
-        }
-
-        .transaction-item {
-            transition: all 0.2s ease;
-        }
-
-        .transaction-item:hover {
-            background: #F8F9FA;
-        }
-
-        .account-card {
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .account-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .account-card:hover::before {
-            opacity: 1;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.4s ease;
-        }
-
-        .loan-progress {
-            transition: width 0.5s ease;
-        }
-
-        .toggle-switch {
-            position: relative;
-            width: 48px;
-            height: 24px;
-            background: #ccc;
-            border-radius: 24px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .toggle-switch.active {
-            background: #5B6FD8;
-        }
-
-        .toggle-switch::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: white;
-            border-radius: 50%;
-            top: 2px;
-            left: 2px;
-            transition: left 0.3s ease;
-        }
-
-        .toggle-switch.active::after {
-            left: 26px;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 16px;
-            padding: 32px;
-            max-width: 500px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            animation: fadeIn 0.3s ease;
-        }
-    </style>
+    <link rel="stylesheet" href="customer_dash.css">
+    <script src="customer_dash.js"></script>
 </head>
+
 <body>
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar -->
@@ -182,9 +22,9 @@
             <!-- Logo -->
             <div class="p-6 flex items-center gap-3">
                 <svg class="w-8 h-8" fill="white" viewBox="0 0 24 24">
-                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                    <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z" />
                 </svg>
-                <span class="text-2xl font-bold" style="font-family:Brush Script MT,cursive;font-size: 30px; color: #333;" >AmarJesh Bank</span>
+                <span class="text-2xl font-bold" style="font-family:Brush Script MT,cursive;font-size: 30px; color: #333;">AmarJesh Bank</span>
             </div>
 
             <!-- Navigation -->
@@ -193,34 +33,46 @@
                     <span class="text-xl">📊</span>
                     <span class="font-medium">Dashboard</span>
                 </a>
-                <a href="#" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg mb-2" data-page="accounts">
+                <a href="account_open.php" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg mb-2" data-page="open">
                     <span class="text-xl">💳</span>
-                    <span class="font-medium">Accounts</span>
+                    <span class="font-medium">Open Account</span>
                 </a>
-                <a href="#" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg mb-2" data-page="transfers">
-                    <span class="text-xl">💸</span>
-                    <span class="font-medium">Transfers</span>
+                <a href="status.php" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg mb-2" data-page="status">
+                    <span class="text-xl">💳</span>
+                    <span class="font-medium">Check Status</span>
                 </a>
-                <a href="#" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg mb-2" data-page="beneficiaries">
-                    <span class="text-xl">👥</span>
-                    <span class="font-medium">Beneficiaries</span>
-                </a>
-                <a href="#" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg mb-2" data-page="loans">
-                    <span class="text-xl">💰</span>
-                    <span class="font-medium">Loans</span>
-                </a>
-                <a href="#" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg mb-2" data-page="investments">
-                    <span class="text-xl">📈</span>
-                    <span class="font-medium">Investments</span>
-                </a>
-                <a href="#" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg mb-2" data-page="settings">
-                    <span class="text-xl">⚙️</span>
-                    <span class="font-medium">Settings</span>
-                </a>
-                <a href="#" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg mb-2" data-page="logout">
-                    <span class="text-xl">🚪</span>
-                    <span class="font-medium">Logout</span>
-                </a>
+
+                <?php if ($approved) { ?>
+                    <a href="#" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg mb-2" data-page="accounts">
+                        <span class="text-xl">💳</span>
+                        <span class="font-medium">Accounts</span>
+                    </a>
+                    <a href="#" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg mb-2" data-page="transfers">
+                        <span class="text-xl">💸</span>
+                        <span class="font-medium">Transfers</span>
+                    </a>
+                    <a href="#" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg mb-2" data-page="beneficiaries">
+                        <span class="text-xl">👥</span>
+                        <span class="font-medium">Beneficiaries</span>
+                    </a>
+                    <a href="#" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg mb-2" data-page="loans">
+                        <span class="text-xl">💰</span>
+                        <span class="font-medium">Loans</span>
+                    </a>
+                    <a href="#" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg mb-2" data-page="investments">
+                        <span class="text-xl">📈</span>
+                        <span class="font-medium">Investments</span>
+                    </a>
+                    <a href="#" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg mb-2" data-page="settings">
+                        <span class="text-xl">⚙️</span>
+                        <span class="font-medium">Settings</span>
+                    </a>
+                <?php } ?>
+                    <a href="logout.php" class="sidebar-item flex items-center gap-3 px-4 py-3 rounded-lg mb-2" data-page="logout">
+                        <span class="text-xl">🚪</span>
+                        <span class="font-medium">Logout</span>
+                    </a>
+
             </nav>
         </div>
 
@@ -638,7 +490,7 @@
                                         <div class="text-2xl font-bold text-indigo-600">$2,450</div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                                     <div>
                                         <div class="text-xs text-gray-500">Loan Amount</div>
@@ -685,7 +537,7 @@
                                         <div class="text-2xl font-bold text-indigo-600">$580</div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                                     <div>
                                         <div class="text-xs text-gray-500">Loan Amount</div>
@@ -998,7 +850,7 @@
                             <!-- Security Tab -->
                             <div id="securityTab" class="settings-content bg-white rounded-2xl p-8 shadow-lg" style="display: none;">
                                 <h3 class="text-2xl font-bold text-gray-800 mb-6">Security Settings</h3>
-                                
+
                                 <div class="mb-8">
                                     <h4 class="font-bold text-gray-800 mb-4">Change Password</h4>
                                     <form>
@@ -1061,7 +913,7 @@
                             <!-- Notifications Tab -->
                             <div id="notificationsTab" class="settings-content bg-white rounded-2xl p-8 shadow-lg" style="display: none;">
                                 <h3 class="text-2xl font-bold text-gray-800 mb-6">Notification Preferences</h3>
-                                
+
                                 <div class="space-y-4">
                                     <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                                         <div>
@@ -1116,7 +968,7 @@
                             <!-- Preferences Tab -->
                             <div id="preferencesTab" class="settings-content bg-white rounded-2xl p-8 shadow-lg" style="display: none;">
                                 <h3 class="text-2xl font-bold text-gray-800 mb-6">Account Preferences</h3>
-                                
+
                                 <div class="space-y-6">
                                     <div>
                                         <label class="block text-sm font-semibold text-gray-700 mb-2">Language</label>
@@ -1249,256 +1101,6 @@
         </div>
     </div>
 
-    <script type="module">
-        // LocalStorage key prefix
-        const STORAGE_PREFIX = 'securebank_';
-
-        // Initialize app data
-        function initializeData() {
-            if (!localStorage.getItem(STORAGE_PREFIX + 'initialized')) {
-                const defaultData = {
-                    user: {
-                        firstName: 'John',
-                        lastName: 'Doe',
-                        email: 'john@example.com',
-                        phone: '+1 (555) 123-4567',
-                        address: '123 Main Street, Apt 4B\nNew York, NY 10001'
-                    },
-                    accounts: [
-                        { type: 'Savings', number: '5678', balance: 45230.50 },
-                        { type: 'Checking', number: '1234', balance: 12450.00 },
-                        { type: 'Credit Card', number: '9876', balance: 2340.00, limit: 10000 }
-                    ],
-                    settings: {
-                        'sms-2fa': true,
-                        'email-notif': true,
-                        'push-notif': true,
-                        'transaction-alert': true,
-                        'payment-reminder': true,
-                        'security-alert': true,
-                        'marketing-email': false,
-                        'dark-mode': false,
-                        'auto-save': true
-                    }
-                };
-                
-                Object.keys(defaultData).forEach(key => {
-                    localStorage.setItem(STORAGE_PREFIX + key, JSON.stringify(defaultData[key]));
-                });
-                
-                localStorage.setItem(STORAGE_PREFIX + 'initialized', 'true');
-            }
-        }
-
-        // Call initialize on load
-        initializeData();
-
-        // Page Navigation
-        const navLinks = document.querySelectorAll('.sidebar-item');
-        const pages = document.querySelectorAll('.page-content');
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetPage = link.dataset.page;
-                
-                if (targetPage === 'logout') {
-                    if (confirm('Are you sure you want to logout?')) {
-                        showSuccessModal('You have been logged out successfully.');
-                        setTimeout(() => {
-                            window.location.reload();
-                        }, 2000);
-                    }
-                    return;
-                }
-
-                // Update active nav
-                navLinks.forEach(l => l.classList.remove('active'));
-                link.classList.add('active');
-
-                // Show target page
-                pages.forEach(p => p.style.display = 'none');
-                const targetElement = document.getElementById(targetPage + 'Page');
-                if (targetElement) {
-                    targetElement.style.display = 'block';
-                    targetElement.classList.add('fade-in');
-                }
-
-                // Update header title
-                const titles = {
-                    dashboard: 'Welcome back, John! 👋',
-                    accounts: 'My Accounts',
-                    transfers: 'Transfer Money',
-                    beneficiaries: 'Beneficiaries',
-                    loans: 'My Loans',
-                    investments: 'Investments',
-                    settings: 'Settings'
-                };
-                
-                document.getElementById('pageTitle').innerHTML = `<h1 class="text-4xl font-bold text-gray-800">${titles[targetPage] || 'SecureBank'}</h1>`;
-            });
-        });
-
-        // Settings Tabs
-        const settingsTabs = document.querySelectorAll('.settings-tab');
-        const settingsContents = document.querySelectorAll('.settings-content');
-
-        settingsTabs.forEach(tab => {
-            tab.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetTab = tab.dataset.tab;
-
-                settingsTabs.forEach(t => {
-                    t.classList.remove('active', 'bg-indigo-50', 'text-indigo-600', 'font-semibold');
-                    t.classList.add('hover:bg-gray-50');
-                });
-                
-                tab.classList.add('active', 'bg-indigo-50', 'text-indigo-600', 'font-semibold');
-                tab.classList.remove('hover:bg-gray-50');
-
-                settingsContents.forEach(c => c.style.display = 'none');
-                const targetContent = document.getElementById(targetTab + 'Tab');
-                if (targetContent) {
-                    targetContent.style.display = 'block';
-                }
-            });
-        });
-
-        // Toggle Switches
-        document.querySelectorAll('.toggle-switch').forEach(toggle => {
-            toggle.addEventListener('click', () => {
-                toggle.classList.toggle('active');
-                const setting = toggle.dataset.setting;
-                const isActive = toggle.classList.contains('active');
-                
-                // Save to localStorage
-                const settings = JSON.parse(localStorage.getItem(STORAGE_PREFIX + 'settings') || '{}');
-                settings[setting] = isActive;
-                localStorage.setItem(STORAGE_PREFIX + 'settings', JSON.stringify(settings));
-            });
-        });
-
-        // Load settings from localStorage
-        function loadSettings() {
-            const settings = JSON.parse(localStorage.getItem(STORAGE_PREFIX + 'settings') || '{}');
-            Object.keys(settings).forEach(key => {
-                const toggle = document.querySelector(`[data-setting="${key}"]`);
-                if (toggle) {
-                    if (settings[key]) {
-                        toggle.classList.add('active');
-                    } else {
-                        toggle.classList.remove('active');
-                    }
-                }
-            });
-        }
-        loadSettings();
-
-        // Modal Functions
-        window.closeModal = function(modalId) {
-            document.getElementById(modalId).classList.remove('active');
-        };
-
-        window.openModal = function(modalId) {
-            document.getElementById(modalId).classList.add('active');
-        };
-
-        window.showSuccessModal = function(message) {
-            document.getElementById('successMessage').textContent = message;
-            openModal('successModal');
-        };
-
-        // Freeze Account
-        document.getElementById('freezeAccountBtn').addEventListener('click', () => {
-            openModal('freezeModal');
-        });
-
-        window.freezeAccount = function() {
-            closeModal('freezeModal');
-            showSuccessModal('Your account has been frozen. Contact support to unfreeze.');
-        };
-
-        // Transfer Form
-        document.getElementById('transferForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const amount = e.target.querySelector('input[type="number"]').value;
-            showSuccessModal(`Transfer of $${amount} completed successfully!`);
-            e.target.reset();
-        });
-
-        // Add Beneficiary
-        document.getElementById('addBeneficiaryBtn').addEventListener('click', () => {
-            openModal('addBeneficiaryModal');
-        });
-
-        document.getElementById('beneficiaryForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            closeModal('addBeneficiaryModal');
-            showSuccessModal('Beneficiary added successfully!');
-            e.target.reset();
-        });
-
-        // Loan Calculator
-        document.getElementById('calculateLoan').addEventListener('click', () => {
-            const amount = parseFloat(document.getElementById('loanAmount').value);
-            const rate = parseFloat(document.getElementById('loanRate').value) / 100 / 12;
-            const term = parseFloat(document.getElementById('loanTerm').value) * 12;
-
-            const monthlyPayment = (amount * rate * Math.pow(1 + rate, term)) / (Math.pow(1 + rate, term) - 1);
-            const totalAmount = monthlyPayment * term;
-            const totalInterest = totalAmount - amount;
-
-            document.getElementById('monthlyPayment').textContent = `$${monthlyPayment.toFixed(0)}`;
-            document.getElementById('totalInterest').textContent = `$${totalInterest.toFixed(0)}`;
-            document.getElementById('totalAmount').textContent = `$${totalAmount.toFixed(0)}`;
-        });
-
-        // Click outside modal to close
-        document.querySelectorAll('.modal').forEach(modal => {
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.classList.remove('active');
-                }
-            });
-        });
-
-        // Balance reveal
-        let balanceRevealed = false;
-        document.getElementById('revealBalance').addEventListener('click', function() {
-            const blurText = document.querySelector('.blur-text');
-            if (!balanceRevealed) {
-                blurText.style.filter = 'none';
-                this.textContent = 'Click to hide';
-                balanceRevealed = true;
-            } else {
-                blurText.style.filter = 'blur(8px)';
-                this.textContent = 'Click to reveal';
-                balanceRevealed = false;
-            }
-        });
-
-        // Add Account button
-        document.getElementById('addAccountBtn')?.addEventListener('click', () => {
-            showSuccessModal('This feature would open a new account application form.');
-        });
-
-        // Apply Loan button
-        document.getElementById('applyLoanBtn')?.addEventListener('click', () => {
-            showSuccessModal('This feature would open a loan application form.');
-        });
-
-        // New Investment button
-        document.getElementById('newInvestmentBtn')?.addEventListener('click', () => {
-            showSuccessModal('This feature would open an investment purchase form.');
-        });
-
-        // Logout confirmation
-        document.getElementById('confirmLogout')?.addEventListener('click', () => {
-            localStorage.clear();
-            window.location.reload();
-        });
-
-        console.log('SecureBank Application Loaded - All features simulated with localStorage');
-    </script>
 </body>
+
 </html>
