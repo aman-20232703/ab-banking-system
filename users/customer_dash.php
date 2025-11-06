@@ -225,7 +225,7 @@ if ($email) {
                             <h3 class="text-xl font-bold text-gray-800 mb-4">Recent Transactions</h3>
                             <div class="space-y-3">
                                 <?php
-                                $q = "SELECT * FROM transfers WHERE users_id = '$id'";
+                                $q = "SELECT * FROM transfers WHERE users_id = '$id' ORDER BY time DESC LIMIT 5";
                                 $res = mysqli_query($conn, $q);
                                 $grouped = [];
 

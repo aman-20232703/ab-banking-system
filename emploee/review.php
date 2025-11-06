@@ -121,14 +121,14 @@ if (isset($_POST['initiate_kyc'])) {
     $mail = new PHPMailer(true);
     try {
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
+        $mail->Host = $_ENV['mail_host'];
         $mail->SMTPAuth = true;
-        $mail->Username = 'ramanujan2709@gmail.com';
-        $mail->Password = 'qgbqqmfzekiniuww'; // Consider using env vars or safer storage.
+        $mail->Username = $_ENV['mail_username'];
+        $mail->Password = $_ENV['mail_password'];
         $mail->SMTPSecure = 'tls';
-        $mail->Port = 587;
+        $mail->Port = $_ENV['mail_port'];
 
-        $mail->setFrom('ramanujan2709@gmail.com', 'Amarjesh Bank');
+        $mail->setFrom($_ENV['mail_from'], $_ENV['mail_from_name']);
         $mail->addAddress($email, $full_name);
         $mail->isHTML(true);
         $mail->Subject = 'KYC Initiation - Amarjesh Bank';

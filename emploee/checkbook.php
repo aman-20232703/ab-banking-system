@@ -6,9 +6,9 @@ $res = mysqli_query($conn, "SELECT cb.*, a.full_name, a.email FROM checkbook cb 
 
 
 if(isset($_GET['action'], $_GET['id'])){
-    $id = intval($_GET['id']);
+    $id = $_GET['id'];
     $action = $_GET['action'] === 'approve' ? 'Approved' : 'Rejected';
-    mysqli_query($conn, "UPDATE checkbook SET status='$action' WHERE request_id=$id");
+    mysqli_query($conn, "UPDATE checkbook SET status='$action' WHERE request_id='$id'");
     header("Location: checkbook.php");
     exit;
 }
