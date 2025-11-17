@@ -36,7 +36,7 @@ if (!$conn){
 // used for signup page.
 // $sql = '
 // CREATE TABLE users (
-//     id INT AUTO_INCREMENT PRIMARY KEY,
+//     id varchar(20) PRIMARY KEY,
 //     name VARCHAR(100) NOT NULL,
 //     email VARCHAR(100) UNIQUE NOT NULL,
 //     phone VARCHAR(20) NOT NULL,
@@ -52,7 +52,7 @@ if (!$conn){
 // }
 
 // used in customer account opening.
-// $sql = '
+//$sql = '
 // CREATE TABLE account(
 //     account_number VARCHAR(20) primary key,
 //     full_name VARCHAR(100),
@@ -74,11 +74,11 @@ if (!$conn){
 // ADD COLUMN reviewed_by VARCHAR(100) NULL,
 // ADD COLUMN reviewed_at DATETIME NULL;
 // ";
-// $sql ="ALTER TABLE account ADD COLUMN kyc_status VARCHAR(50) DEFAULT 'Not Started'";
-// $sql = "ALTER TABLE account ADD COLUMN show_kyc_button BOOLEAN DEFAULT FALSE";
+//$sql ="ALTER TABLE account ADD COLUMN kyc_status VARCHAR(50) DEFAULT 'Not Started'";
+//$sql = "ALTER TABLE account ADD COLUMN show_kyc_button BOOLEAN DEFAULT FALSE";
 // $sql ="ALTER TABLE account ADD COLUMN photo_path VARCHAR(255) NULL,
 // ADD COLUMN sign_path VARCHAR(255) NULL";
-// if (mysqli_query($conn,$sql)){
+// if ($conn->multi_query($sql)){
 //     echo ('table created successfully.');
 // }
 // else{
@@ -99,7 +99,7 @@ if (!$conn){
 // ADD otp_expires DATETIME DEFAULT NULL,
 // ADD is_verified TINYINT(1) DEFAULT 0;
 // ";
-// if (mysqli_query($conn,$sql)){
+// if ($conn->multi_query($sql)){
 //     echo ('table created successfully.');
 // }
 // else{

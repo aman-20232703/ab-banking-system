@@ -6,19 +6,18 @@
 // $conn = mysqli_connect($servername,$username,$password);
 // if(!$conn){
 //     die(mysqli_connect_error());
+// }
+// // else{
+// //     echo("Server Connected Successfully");
+// // }
 
-// }
-// else{
-//     echo("Server Connected Successfully");
-// }
-
-// $sql = 'CREATE DATABASE banking';
-// if (mysqli_query($conn,$sql)){
-//     echo "Database created successfully";
-// }
-// else{
-//     echo "There is an error ".mysqli_error($conn);
-// }
+// // $sql = 'CREATE DATABASE banking';
+// // if (mysqli_query($conn,$sql)){
+// //     echo "Database created successfully";
+// // }
+// // else{
+// //     echo "There is an error ".mysqli_error($conn);
+// // }
 
 $servername = 'localhost';
 $username = 'root';
@@ -112,12 +111,11 @@ if (!$conn){
 //     tenure_months INT NOT NULL,
 //     start_date DATE NOT NULL DEFAULT CURRENT_DATE,
 //     maturity_date DATE GENERATED ALWAYS AS (DATE_ADD(start_date, INTERVAL tenure_months MONTH)) STORED,
-//     interest_payout ENUM('monthly', 'quarterly', 'maturity') NOT NULL,
-//     auto_renewal BOOLEAN DEFAULT FALSE,
 //     nominee VARCHAR(50),
-//     payment_mode ENUM('UPI', 'NEFT', 'Cheque','Cash') NOT NULL
 // )";
-
+// ALTER TABLE `fd_rd_accounts` ADD `interest` FLOAT NOT NULL AFTER `tenure_months`;
+// ALTER TABLE `fd_rd_accounts` ADD `maturity_amount` DECIMAL(10,2) NOT NULL AFTER `maturity_date`,
+//  ADD `status` ENUM('active','freeze') NOT NULL DEFAULT 'active' AFTER `maturity_amount`;
 # for freezing the accounts.
 // $sql = "CREATE TABLE freeze_accounts (
 //     email VARCHAR(255) NOT NULL PRIMARY KEY,
@@ -126,6 +124,9 @@ if (!$conn){
 //     comments TEXT,
 //     requested_at DATETIME DEFAULT CURRENT_TIMESTAMP
 // )";
+// ALTER TABLE `freeze_accounts` ADD `reference_id` VARCHAR(30) NOT NULL FIRST;
+// ALTER TABLE `freeze_accounts` ADD `status` ENUM('requested','approved','rejected','un_freezed') NOT NULL DEFAULT 'requested' AFTER `requested_at`;
+
 // if (mysqli_query($conn,$sql)){
 //     echo ('table created successfully.');
 // }
@@ -142,13 +143,15 @@ if (!$conn){
 //   phone VARCHAR(20),
 //   email VARCHAR(100)
 // )";
-
+// ALTER TABLE `beneficiaries` ADD `users_id` VARCHAR(20) NOT NULL FIRST;
 // $sql = "CREATE TABLE transfers (
 // `from` varchar(20) NOT NULL,
 // `type` varchar(20) NOT NULL,
 // `to` varchar(20) NOT NULL,
 // `amount` decimal(10,2) NOT NULL,
 // `description` TEXT)";
+// ALTER TABLE `transfers` ADD `time` DATE NOT NULL AFTER `description`;
+//ALTER TABLE `transfers` ADD `users_id` VARCHAR(20) NOT NULL FIRST;
 
 
 // $sql = "CREATE TABLE checkbook (
@@ -159,7 +162,7 @@ if (!$conn){
 //     status ENUM('Pending','Approved','Rejected') DEFAULT 'Pending',
 //     request_time DATETIME DEFAULT CURRENT_TIMESTAMP
 // )";
-
+// ALTER TABLE `checkbook` ADD `users_id` VARCHAR(20) NOT NULL AFTER `request_id`;
 // $sql = "
 // CREATE TABLE `cards` (
 //     `request_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -178,6 +181,17 @@ if (!$conn){
 // ADD COLUMN cvv VARCHAR(3) NULL,
 // ADD COLUMN expiry_date DATE NULL;
 // ";
+// $sql = "CREATE TABLE manager(
+//     admin_id   varchar(50) PRIMARY KEY,
+//     password varchar(200) not null,
+//     name      VARCHAR(100)  NULL,
+//     email     VARCHAR(150)   NULL,
+//     phone              VARCHAR(20),
+//     branch             VARCHAR(100) NULL,
+//     joining_date       DATE NULL,
+//     created_at         TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+// )";
+
 // if (mysqli_query($conn,$sql)){
 //     echo ('table created successfully.');
 // }

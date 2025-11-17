@@ -43,7 +43,7 @@ try {
     $mail->Password = $_ENV['mail_Password'];
     $mail->SMTPSecure='tls';
     $mail->Port = $_ENV['mail_Port'];
-    $mail->setFrom ($_ENV['mail_from'],$_ENV['mail_from_name']);
+    $mail->setFrom ($_ENV['mail_From'],$_ENV['mail_from_user']);
     $mail->addAddress($email);
     $mail->isHTML(true);
     $mail->Subject='Your AmarjeshBank OTP';

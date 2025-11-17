@@ -2,7 +2,7 @@
 include 'dbconnect.php';
 session_start();
 
-$mobile = $_GET['mobile']??'';
+$mobile = $_GET['mobile'] ?? '';
 if (isset($_POST['verify'])) {
     $employee =  $_SESSION['employee_name'];
     $sql = "UPDATE account SET status='verified', reviewed_by='$employee', reviewed_at=NOW()
@@ -10,7 +10,7 @@ if (isset($_POST['verify'])) {
     mysqli_query($conn, $sql);
     echo "<script>
         alert('Application verified and sent to Manager for approval.');
-        window.location='employee_dash.php';
+        window.location='sidebar.php';
     </script>";
 }
 
@@ -20,11 +20,13 @@ $data = mysqli_fetch_assoc($result);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Review Application</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gray-100 font-sans text-gray-900">
 
     <div class="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg mt-10">
@@ -100,9 +102,11 @@ $data = mysqli_fetch_assoc($result);
     </div>
 
 </body>
+
 </html>
 
 <?php
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -114,21 +118,21 @@ if (isset($_POST['initiate_kyc'])) {
     $employee = $_SESSION['employee_name'];
     $email = $data['email'];
     $full_name = $data['full_name'];
-
+echo $email;
     $update_kyc = "UPDATE account SET kyc_status='Initiated', show_kyc_button=TRUE, reviewed_by='$employee', reviewed_at=NOW() WHERE mobile = '$mobile'";
     mysqli_query($conn, $update_kyc);
+    
 
     $mail = new PHPMailer(true);
     try {
         $mail->isSMTP();
-        $mail->Host = $_ENV['mail_host'];
+        $mail->Host = $_ENV['mail_Host'];
         $mail->SMTPAuth = true;
-        $mail->Username = $_ENV['mail_username'];
-        $mail->Password = $_ENV['mail_password'];
+        $mail->Username = $_ENV['mail_Username'];
+        $mail->Password = $_ENV['mail_Password'];
         $mail->SMTPSecure = 'tls';
-        $mail->Port = $_ENV['mail_port'];
-
-        $mail->setFrom($_ENV['mail_from'], $_ENV['mail_from_name']);
+        $mail->Port = $_ENV['mail_Port'];
+        $mail->setFrom($_ENV['mail_From'], $_ENV['mail_from_user']);
         $mail->addAddress($email, $full_name);
         $mail->isHTML(true);
         $mail->Subject = 'KYC Initiation - Amarjesh Bank';
@@ -140,12 +144,12 @@ if (isset($_POST['initiate_kyc'])) {
 
         echo "<script>
             alert('✅ KYC initiated and user notified.');
-            window.location='employee_dash.php';
+            window.location='sidebar.php';
         </script>";
     } catch (Exception $e) {
         echo "<script>
             alert('KYC initiated, but email failed: " . $mail->ErrorInfo . "');
-            window.location='employee_dash.php';
+            window.location='sidebar.php';
         </script>";
     }
 }

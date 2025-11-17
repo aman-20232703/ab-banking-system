@@ -34,7 +34,7 @@ $result = mysqli_query($conn, $sql);
                     <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                         <tr class="hover:bg-gray-50 border-t">
                             <?php $email = $row['email']?>
-                             <?php $account = $row['account_number']?> 
+                            <?php $account = $row['account_number']?> 
                             <td class="px-4 py-3"><?= htmlspecialchars($row['account_number']) ?></td>
                             <td class="px-4 py-3"><?= htmlspecialchars($row['email']) ?></td>
                             <td class="px-4 py-3"><?= htmlspecialchars($row['reason']) ?></td>

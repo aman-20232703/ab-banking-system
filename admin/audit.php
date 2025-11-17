@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,7 +55,7 @@
             list-style: none;
         }
 
-        .menu a{
+        .menu a {
             text-decoration: none;
             color: white;
         }
@@ -93,7 +94,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .header h1 {
@@ -121,9 +122,12 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 opacity: 1;
             }
+
             50% {
                 opacity: 0.5;
             }
@@ -194,7 +198,7 @@
             background: white;
             padding: 25px;
             border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .stat-value {
@@ -216,7 +220,7 @@
             padding: 25px;
             border-radius: 15px;
             margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .filters-grid {
@@ -296,7 +300,7 @@
         .logs-container {
             background: white;
             border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             overflow: hidden;
         }
 
@@ -478,35 +482,48 @@
         }
     </style>
 </head>
+
 <body>
     <div class="admin-dashboard">
         <div class="sidebar">
-        <div class="logo" style="font-family:Brush Script MT,cursive;font-size: 20px; color: #333;">🏦 AmarJesh Bank</div>
+            <div class="logo" style="font-family:Brush Script MT,cursive;font-size: 20px; color: #333;">🏦 AmarJesh Bank</div>
             <div class="admin-badge">ADMIN PANEL</div>
             <ul class="menu">
-                <li class="menu-item-active">
+                <li class="menu-item">
                     <span>👥</span>
-                    <span><a href="index (3).html">User Management</a></span>
+                    <span><a href="admin_dash.php">User Management</a></span>
                 </li>
                 <li class="menu-item">
                     <span>📋</span>
-                    <span><a href="index (4).html">Audit logs</a></span>
+                    <span><a href="audit.php">Audit logs</a></span>
                 </li>
                 <li class="menu-item">
                     <span>🔍</span>
-                    <span><a href="index (5).html">KYC Verification</a></span>
+                    <span><a href="kyc.php">KYC Verification</a></span>
+                </li>
+                <li class="menu-item">
+                    <span>🔰</span>
+                    <span><a href="approve.php">Account Approval</a></span>
+                </li>
+                <li class="menu-item">
+                    <span>❌</span>
+                    <span><a href="freeze.php">Freeze Request</a></span>
+                </li>
+                <li class="menu-item">
+                    <span>✅</span>
+                    <span><a href="un_freeze.php">Unfreeze Request</a></span>
                 </li>
                 <li class="menu-item">
                     <span>⚙️</span>
-                    <span><a href="">System Settings</a></span>
+                    <span><a href="setting.php">System Settings</a></span>
                 </li>
                 <li class="menu-item">
                     <span>📊</span>
-                    <span><a href="">Reports</a></span>
+                    <span><a href="reports.php">Reports</a></span>
                 </li>
                 <li class="menu-item">
                     <span>🔐</span>
-                    <span><a href="">Security Center</a></span>
+                    <span><a href="security.php">Security Center</a></span>
                 </li>
             </ul>
         </div>
@@ -612,7 +629,7 @@
                     <div>TIMESTAMP</div>
                     <div>HASH CHECKSUM</div>
                 </div>
-                
+
                 <div class="log-item">
                     <div class="log-id">#47832</div>
                     <div class="log-details">
@@ -842,8 +859,15 @@
             const dateTo = document.getElementById('dateTo').value;
             const userId = document.getElementById('userIdFilter').value;
             const ip = document.getElementById('ipFilter').value;
-            
-            console.log('Applying filters:', { search, action, dateFrom, dateTo, userId, ip });
+
+            console.log('Applying filters:', {
+                search,
+                action,
+                dateFrom,
+                dateTo,
+                userId,
+                ip
+            });
             alert('Filtering audit logs...');
             // In production: fetch filtered logs from API
         }
@@ -875,4 +899,5 @@
         }, 30000);
     </script>
 </body>
+
 </html>

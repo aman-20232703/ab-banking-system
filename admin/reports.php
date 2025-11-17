@@ -271,12 +271,15 @@
         <div class="admin-badge">ADMIN PANEL</div>
         
         <div class="nav-section">
-            <div class="nav-title">User Management</div>
-            <a href="index (4).html" class="nav-item">📋 Audit logs</a>
-            <a href="index (5).html" class="nav-item">👤 KYC Verification</a>
-            <a href="index (6).html" class="nav-item">⚙️ System Settings</a>
-            <a href="index (7).html" class="nav-item active">📊 Reports</a>
-            <a href="index (8).html" class="nav-item">🔒 Security Center</a>
+            <a href="admin_dash.php" class="nav-item">👥 User Management</a>
+            <a href="audit.php" class="nav-item">📋 Audit logs</a>
+            <a href="kyc.php" class="nav-item">🔍 KYC Verification</a>
+            <a href="setting.php" class="nav-item">🔰 Accounts Approval</a>
+            <a href="reports.php" class="nav-item active">❌ Freeze Request</a>
+            <a href="security.php" class="nav-item">✅ Unfreeze Request</a>
+            <a href="setting.php" class="nav-item">⚙️ System Settings</a>
+            <a href="reports.php" class="nav-item active">📊 Reports</a>
+            <a href="security.php" class="nav-item">🔒 Security Center</a>
         </div>
     </div>
 

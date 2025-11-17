@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,7 +55,7 @@
             list-style: none;
         }
 
-        .menu a{
+        .menu a {
             text-decoration: none;
             color: white;
         }
@@ -93,7 +94,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .header h1 {
@@ -125,7 +126,7 @@
             background: white;
             padding: 25px;
             border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .stat-value {
@@ -149,7 +150,7 @@
         .tabs-container {
             background: white;
             border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             margin-bottom: 30px;
         }
 
@@ -203,7 +204,7 @@
 
         .kyc-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             border-color: #dc3545;
         }
 
@@ -375,7 +376,7 @@
             width: 90%;
             max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
             animation: modalSlideUp 0.3s ease;
         }
 
@@ -384,6 +385,7 @@
                 opacity: 0;
                 transform: translateY(50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -562,35 +564,48 @@
         }
     </style>
 </head>
+
 <body>
     <div class="admin-dashboard">
         <div class="sidebar">
-        <div class="logo" style="font-family:Brush Script MT,cursive;font-size: 20px; color: #333;">🏦 AmarJesh Bank</div>
+            <div class="logo" style="font-family:Brush Script MT,cursive;font-size: 20px; color: #333;">🏦 AmarJesh Bank</div>
             <div class="admin-badge">ADMIN PANEL</div>
             <ul class="menu">
-                <li class="menu-item-active">
+                <li class="menu-item">
                     <span>👥</span>
-                    <span><a href="index (3).html">User Management</a></span>
+                    <span><a href="admin_dash.php">User Management</a></span>
                 </li>
                 <li class="menu-item">
                     <span>📋</span>
-                    <span><a href="index (4).html">Audit logs</a></span>
+                    <span><a href="audit.php">Audit logs</a></span>
                 </li>
                 <li class="menu-item">
                     <span>🔍</span>
-                    <span><a href="index (5).html">KYC Verification</a></span>
+                    <span><a href="kyc.php">KYC Verification</a></span>
+                </li>
+                <li class="menu-item">
+                    <span>🔰</span>
+                    <span><a href="approve.php">Account Approval</a></span>
+                </li>
+                <li class="menu-item">
+                    <span>❌</span>
+                    <span><a href="freeze.php">Freeze Request</a></span>
+                </li>
+                <li class="menu-item">
+                    <span>✅</span>
+                    <span><a href="un_freeze.php">Unfreeze Request</a></span>
                 </li>
                 <li class="menu-item">
                     <span>⚙️</span>
-                    <span><a href="index (6).html">System Settings</a></span>
+                    <span><a href="setting.php">System Settings</a></span>
                 </li>
                 <li class="menu-item">
                     <span>📊</span>
-                    <span><a href="index (7).html">Reports</a></span>
+                    <span><a href="reports.php">Reports</a></span>
                 </li>
                 <li class="menu-item">
                     <span>🔐</span>
-                    <span><a href="index (8).html">Security Center</a></span>
+                    <span><a href="security.php">Security Center</a></span>
                 </li>
             </ul>
         </div>
@@ -946,7 +961,7 @@
 
         function approveKYC() {
             const notes = document.querySelector('.notes-textarea').value;
-            
+
             if (confirm('✅ Approve this KYC application?\n\nThis action will:\n- Verify the user account\n- Grant full banking access\n- Be permanently logged in audit trail\n\nProceed with approval?')) {
                 alert('✅ KYC Application APPROVED\n\n✓ User account verified\n✓ Full access')
             }

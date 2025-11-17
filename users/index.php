@@ -265,7 +265,6 @@ include 'dbconnect.php';
                 return;
             }
             if (password !== confirm) { alert('Passwords do not match!'); return; }
-
             const response = await fetch('signup.php', { method: 'POST', body: formData });
             const data = await response.json();
 

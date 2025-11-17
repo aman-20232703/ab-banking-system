@@ -52,10 +52,10 @@
             <div id="loginDropdown"
                 class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-50 border fade-in-dropdown">
                 
-                <a href="admin/admin_dash.php" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-indigo-100">
+                <a href="admin/login.php" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-indigo-100">
                     👨‍💼 Manager
                 </a>
-                <a href="emploee/employee_dash.php" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-green-100">
+                <a href="employee/login.php" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-green-100">
                     👷 Employee
                 </a>
                 <a href="users/index.php" class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-indigo-100">

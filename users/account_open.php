@@ -178,6 +178,7 @@ function generateAcNumber($conn)
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $_SESSION['user_id'] ;
     $name = trim($_POST['full_name']);
     $dob = $_POST['dob'];
     $gender = $_POST['gender'];
@@ -227,8 +228,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>";
     } else {
         $account_number = generateAcNumber($conn);
-        $sql = "INSERT INTO account(account_number, full_name, dob, gender, adhar, email, mobile, address, account_type, deposit, id_proof, address_proof)
-                VALUES ('$account_number', '$name', '$dob', '$gender', '$aadhaar', '$email', '$mobile', '$address', '$account', '$deposit', '$id_proof', '$address_proof')";
+        $sql = "INSERT INTO account(users_id,account_number, full_name, dob, gender, adhar, email, mobile, address, account_type, deposit, id_proof, address_proof)
+                VALUES ('$id','$account_number', '$name', '$dob', '$gender', '$aadhaar', '$email', '$mobile', '$address', '$account', '$deposit', '$id_proof', '$address_proof')";
 
         if (mysqli_query($conn, $sql)) {
             echo "

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,14 +14,9 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: "Inter", sans-serif;
             background: #f8f9fa;
             color: #333;
-        }
-
-        .admin-dashboard {
-            display: flex;
-            min-height: 100vh;
         }
 
         .sidebar {
@@ -54,7 +50,7 @@
             list-style: none;
         }
 
-        .menu a{
+        .menu a {
             text-decoration: none;
             color: white;
         }
@@ -78,6 +74,11 @@
             border-left: 4px solid white;
         }
 
+        .admin-dashboard {
+            display: flex;
+            min-height: 100vh;
+        }
+
         .main-content {
             margin-left: 260px;
             flex: 1;
@@ -92,7 +93,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .header h1 {
@@ -140,7 +141,7 @@
             padding: 25px;
             border-radius: 15px;
             margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .filters-grid {
@@ -168,7 +169,7 @@
             border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 14px;
-            font-family: 'Inter', sans-serif;
+            font-family: "Inter", sans-serif;
             transition: border-color 0.3s;
         }
 
@@ -229,7 +230,7 @@
         .users-table-container {
             background: white;
             border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             overflow: hidden;
         }
 
@@ -318,7 +319,7 @@
             position: absolute;
             background: white;
             min-width: 180px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             z-index: 100;
             border-radius: 8px;
             overflow: hidden;
@@ -376,7 +377,7 @@
             border-radius: 20px;
             max-width: 500px;
             width: 90%;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             animation: modalSlideUp 0.3s ease;
         }
 
@@ -385,6 +386,7 @@
                 opacity: 0;
                 transform: translateY(50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -418,7 +420,7 @@
             border: 2px solid #e0e0e0;
             border-radius: 8px;
             font-size: 14px;
-            font-family: 'Inter', sans-serif;
+            font-family: "Inter", sans-serif;
             transition: border-color 0.3s;
         }
 
@@ -458,7 +460,7 @@
             background: white;
             padding: 25px;
             border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         .stat-value {
@@ -484,45 +486,58 @@
             font-size: 14px;
             color: #856404;
         }
-        .menu-item-active{
+
+        .menu-item-active {
             text-decoration: none;
             color: white;
         }
     </style>
 </head>
-<body>
-    <div class="admin-dashboard">
-        <div class="sidebar">
-        <div class="logo" style="font-family:Brush Script MT,cursive;font-size: 20px; color: #333;">🏦 AmarJesh Bank</div>
-            <div class="admin-badge">ADMIN PANEL</div>
-            <ul class="menu">
-                <li class="menu-item-active">
-                    <span>👥</span>
-                    <span><a href="index (3).html">User Management</a></span>
-                </li>
-                <li class="menu-item">
-                    <span>📋</span>
-                    <span><a href="index (4).html">Audit logs</a></span>
-                </li>
-                <li class="menu-item">
-                    <span>🔍</span>
-                    <span><a href="index (5).html">KYC Verification</a></span>
-                </li>
-                <li class="menu-item">
-                    <span>⚙️</span>
-                    <span><a href="index (6).html">System Settings</a></span>
-                </li>
-                <li class="menu-item">
-                    <span>📊</span>
-                    <span><a href="index (7).html">Reports</a></span>
-                </li>
-                <li class="menu-item">
-                    <span>🔐</span>
-                    <span><a href="index (8).html">Security Center</a></span>
-                </li>
-            </ul>
-        </div>
 
+<body>
+    <div class="sidebar">
+        <div class="logo" style="font-family:Brush Script MT,cursive;font-size: 20px; color: #333;">🏦 AmarJesh Bank</div>
+        <div class="admin-badge">ADMIN PANEL</div>
+        <ul class="menu">
+            <li class="menu-item">
+                <span>👥</span>
+                <span><a href="approve.php">User Management</a></span>
+            </li>
+            <li class="menu-item">
+                <span>📋</span>
+                <span><a href="audit.php">Audit logs</a></span>
+            </li>
+            <li class="menu-item">
+                <span>🔍</span>
+                <span><a href="kyc.php">KYC Verification</a></span>
+            </li>
+            <li class="menu-item">
+                <span>🔰</span>
+                <span><a href="user_approval.php">Account Approval</a></span>
+            </li>
+            <li class="menu-item">
+                <span>❌</span>
+                <span><a href="freeze.php">Freeze Request</a></span>
+            </li>
+            <li class="menu-item">
+                <span>✅</span>
+                <span><a href="un_freeze.php">Unfreeze Request</a></span>
+            </li>
+            <li class="menu-item">
+                <span>⚙️</span>
+                <span><a href="setting.php">System Settings</a></span>
+            </li>
+            <li class="menu-item">
+                <span>📊</span>
+                <span><a href="reports.php">Reports</a></span>
+            </li>
+            <li class="menu-item">
+                <span>🔐</span>
+                <span><a href="security.php">Security Center</a></span>
+            </li>
+        </ul>
+    </div>
+    <div class="admin-dashboard">
         <div class="main-content">
             <div class="header">
                 <h1>User Management</h1>
@@ -777,12 +792,12 @@
         // Toggle dropdown menu
         function toggleDropdown(btn) {
             const dropdown = btn.nextElementSibling;
-            
+
             // Close all other dropdowns
             document.querySelectorAll('.dropdown-content').forEach(d => {
                 if (d !== dropdown) d.classList.remove('show');
             });
-            
+
             dropdown.classList.toggle('show');
         }
 
@@ -857,7 +872,7 @@
             const status = document.getElementById('statusFilter').value;
             const accountType = document.getElementById('accountTypeFilter').value;
             const date = document.getElementById('dateFilter').value;
-            
+
             alert('Applying filters...\nSearch: ' + search + '\nStatus: ' + status + '\nAccount Type: ' + accountType + '\nDate: ' + date);
             // In production: fetch filtered users from API
         }
@@ -878,7 +893,7 @@
         // Form submission
         document.getElementById('userForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             const userData = {
                 name: document.getElementById('userName').value,
                 email: document.getElementById('userEmail').value,
@@ -887,19 +902,20 @@
                 balance: document.getElementById('userBalance').value,
                 status: document.getElementById('userStatus').value
             };
-            
+
             alert('Creating user: ' + userData.name);
             console.log('User data:', userData);
-            
+
             // In production: send to API
             // fetch('/api/admin/create-user', {
             //     method: 'POST',
             //     headers: { 'Content-Type': 'application/json' },
             //     body: JSON.stringify(userData)
             // });
-            
+
             closeModal();
         });
     </script>
 </body>
+
 </html>
